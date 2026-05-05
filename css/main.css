@@ -5679,19 +5679,20 @@ body{
 
 
 
-/* === Teléfono en header SOLO MOBILE === */
+/* === Teléfono centrado SOLO EN MOBILE === */
 
-/* En desktop no aparece y no ocupa espacio */
+/* Desktop: no aparece y no mueve nada */
 .nav-phone-highlight{
   display:none !important;
 }
 
-/* Restaurar header desktop para que quede como antes */
+/* Desktop: mantener header normal */
 @media (min-width:981px){
   .navbar.ref-navbar .nav-inner,
   .ref-navbar .nav-inner{
     justify-content:space-between !important;
     gap:22px !important;
+    position:relative;
   }
 
   .navbar.ref-navbar .nav-links,
@@ -5700,66 +5701,76 @@ body{
   }
 }
 
-/* Mostrar número solo cuando aparece el menú mobile */
+/* Mobile: número exactamente al centro */
 @media (max-width:980px){
   .navbar.ref-navbar .nav-inner,
   .ref-navbar .nav-inner{
-    justify-content:flex-start !important;
-    gap:8px !important;
+    position:relative !important;
+    justify-content:space-between !important;
   }
 
   .nav-phone-highlight{
     display:flex !important;
     align-items:center;
     justify-content:center;
-    margin-left:auto;
-    margin-right:auto;
-    gap:7px;
+    gap:6px;
+
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%, -50%) !important;
+
+    margin:0 !important;
+    padding:4px 6px !important;
+    max-width:none !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+
     color:#075bb8 !important;
     font-family:var(--font-display);
     font-weight:900;
-    font-size:.96rem;
+    font-size:.88rem;
     letter-spacing:-.015em;
     text-decoration:none;
     white-space:nowrap;
     line-height:1;
-    padding:6px 8px;
-    border-radius:999px;
+    z-index:3;
   }
 
   .nav-phone-highlight img{
-    width:24px;
-    height:24px;
+    width:21px !important;
+    height:21px !important;
     object-fit:contain;
     display:block;
-  }
-}
-
-@media (max-width:620px){
-  .nav-phone-highlight{
-    font-size:.92rem;
-    padding:4px 6px;
-    max-width:calc(100vw - 220px);
-    overflow:hidden;
-    text-overflow:ellipsis;
+    flex:0 0 auto;
   }
 
   .nav-phone-highlight span{
     display:block;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    overflow:visible !important;
+    text-overflow:clip !important;
+  }
+
+  .ref-navbar .menu-btn{
+    position:relative;
+    z-index:4;
+  }
+
+  .ref-navbar .brand{
+    position:relative;
+    z-index:4;
   }
 }
 
-@media (max-width:420px){
+/* Celulares muy pequeños */
+@media (max-width:390px){
   .nav-phone-highlight{
-    gap:6px;
-    font-size:.84rem;
-    max-width:calc(100vw - 196px);
+    font-size:.8rem !important;
+    gap:5px;
   }
 
   .nav-phone-highlight img{
-    width:20px;
-    height:20px;
+    width:19px !important;
+    height:19px !important;
   }
 }
